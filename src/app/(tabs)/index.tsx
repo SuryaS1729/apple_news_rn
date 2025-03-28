@@ -1,6 +1,7 @@
 import NewsListItem from "@/components/NewsListItem";
-import { StatusBar, Text, View } from "react-native";
+import { StatusBar, Text, View, FlatList, SectionList } from "react-native";
 import allNews from '@assets/data/allNews.json';
+import homeNews from '@assets/data/homeNews.json';
 
 export default function HomeScreen() {
   
@@ -8,11 +9,14 @@ export default function HomeScreen() {
   return (
     <View style={{marginTop:60}}>
       <StatusBar translucent hidden/>
-      <NewsListItem newsArticle={allNews[0]}/>
-      {/* <NewsListItem newsArticle={allNews[1]}/>
-      <NewsListItem newsArticle={allNews[2]}/>
-      <NewsListItem newsArticle={allNews[3]}/>
-      <NewsListItem newsArticle={allNews[4]}/> */}
+    <SectionList
+    sections={homeNews}
+    renderItem={({item})=><NewsListItem newsArticle={item}/>}
+    renderSectionHeader={({section})=><Text>{section.title}</Text>}
+    stickySectionHeadersEnabled={false}
+    showsVerticalScrollIndicator={false}
+    />
+
     </View> 
   );
 }

@@ -3,8 +3,13 @@ import React from 'react'
 import allNews from '@assets/data/allNews.json';
 import {formatDistanceToNow} from 'date-fns'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { News } from '@/types/types';
 
-const NewsListItem = ({newsArticle}) => {
+type NewsListItemProps = {
+    newsArticle: News
+}
+
+const NewsListItem = ({newsArticle}:NewsListItemProps) => {
     
 
     return (
