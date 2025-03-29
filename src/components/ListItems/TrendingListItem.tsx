@@ -7,16 +7,17 @@ import NewsListItemFooter from '../NewsListItemFooter'
 
 type TrendingListItemProps = {
     newsArticle: News
+    index:number
 }
 
 
 
 
-const TrendingListItem = ({newsArticle}:TrendingListItemProps) => {
+const TrendingListItem = ({newsArticle, index}:TrendingListItemProps) => {
   return (
     <View style={{flexDirection:'row',marginTop:8, marginBottom:20, gap:15}}>
         <View style={styles.bubbleCont}>
-            <Text style={styles.bubbleTitleText}>1</Text>   
+            <Text style={styles.bubbleTitleText}>{index+1}</Text>   
         </View>
         <View style={styles.trendingNewsCard}>
             <View style={{gap:5}}>

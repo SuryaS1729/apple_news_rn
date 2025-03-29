@@ -4,7 +4,7 @@ import allNews from '@assets/data/allNews.json';
 import homeNews from '@assets/data/homeNews.json';
 import MainNewsCard from "@/components/ListItems/MainNewsCard";
 import TrendingListItem from "@/components/ListItems/TrendingListItem";
-
+import { AntDesign } from "@expo/vector-icons";
 
 const TITLES = {
   TOP_STORIES : 'Top Stories',
@@ -13,6 +13,7 @@ const TITLES = {
   LATEST : 'Latest'
 }
 export default function HomeScreen() {
+  const date = new Date()
 
   const renderSectionHeader = (title: string) => {
     if (title === TITLES.TOP_STORIES) {
@@ -43,16 +44,38 @@ export default function HomeScreen() {
 
     return null;
   };
-
+ 
   return (
     <View style={{marginTop:60, margin:15}}>
       <StatusBar translucent hidden/>
     <SectionList
     sections={homeNews}
-    renderItem={({item})=><NewsListItem newsArticle={item}/>}
+    renderItem={({item, index, section})=>{
+        switch(section.title){
+          case TITLES.TOP_STORIES:
+            return index === 0 ? <MainNewsCard newsArticle={item}/> : <NewsListItem newsArticle={item}/>
+          case TITLES.TRENDING:
+            return <TrendingListItem newsArticle={item} index = {index}/>
+          case TITLES.FOR_YOU:
+            return <NewsListItem newsArticle={item}/>
+          default:
+            return null  
+            
+          
+        }
+    }}
     renderSectionHeader={({section})=>renderSectionHeader(section.title)}
     stickySectionHeadersEnabled={false}
     showsVerticalScrollIndicator={false}
+    ListHeaderComponent={
+      <View>
+          <View style={{flexDirection:'row',alignItems:'center'}}>
+              <AntDesign name="apple1" size={24} color="black"/>
+              <Text style={{fontSize:27, fontWeight:'800'}}>News</Text>
+          </View>
+          <Text  style={{fontSize:27, fontWeight:'800', color:"grey"}}>{date.toLocaleString('default', {month: 'long', day:'2-digit'})}</Text>
+      </View>
+    }
     />
 
     </View> 
