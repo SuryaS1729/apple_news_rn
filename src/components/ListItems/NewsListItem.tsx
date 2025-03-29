@@ -14,7 +14,7 @@ const NewsListItem = ({newsArticle}:NewsListItemProps) => {
     
 
     return (
-        <View style={{backgroundColor:'white', padding:10, gap:10,margin:10,borderRadius:10}}>
+        <View style={{backgroundColor:'white', padding:10, gap:10,marginBottom:15,borderRadius:10}}>
           <View style={{flexDirection:'row'}}>
           <View style={{flexShrink:1, marginRight:10, gap:5}}>
               <Image source={require('@assets/black-logo.png')} style={{width: 50, height: 20}} resizeMode='contain'/>
