@@ -1,6 +1,7 @@
 import { News } from "@/types/types";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import NewsListItemFooter from "../NewsListItemFooter";
+import { Link } from "expo-router";
 
 type MainNewsCardProps = {
     newsArticle: News
@@ -10,7 +11,9 @@ type MainNewsCardProps = {
 
 export default function MainNewsCard({newsArticle}:MainNewsCardProps){
     return (
-        <View style={styles.container}>
+       <Link href={`/newsArticle/${newsArticle.id}`} asChild> 
+
+       <Pressable style={styles.container}>
             <Image source={{uri: newsArticle.image}} style={styles.mainImage}/>
             <View style={{padding:10}}>
                 <Image source={require('@assets/black-logo.png')} style={{width: 50, height: 20, marginBlock:5}} resizeMode='contain'/>
@@ -19,7 +22,9 @@ export default function MainNewsCard({newsArticle}:MainNewsCardProps){
             </View>
 
 
-        </View>
+        </Pressable>
+        
+        </Link>
     )
 }
 

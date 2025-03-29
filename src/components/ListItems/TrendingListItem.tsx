@@ -1,8 +1,9 @@
 
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import { News } from '@/types/types'
 import NewsListItemFooter from '../NewsListItemFooter'
+import { Link } from 'expo-router'
 
 
 type TrendingListItemProps = {
@@ -15,7 +16,9 @@ type TrendingListItemProps = {
 
 const TrendingListItem = ({newsArticle, index}:TrendingListItemProps) => {
   return (
-    <View style={{flexDirection:'row',marginTop:8, marginBottom:20, gap:15}}>
+
+       <Link href={`/newsArticle/${newsArticle.id}`} asChild> 
+    <Pressable style={{flexDirection:'row',marginTop:8, marginBottom:20, gap:15}}>
         <View style={styles.bubbleCont}>
             <Text style={styles.bubbleTitleText}>{index+1}</Text>   
         </View>
@@ -26,7 +29,9 @@ const TrendingListItem = ({newsArticle, index}:TrendingListItemProps) => {
             </View>
             <NewsListItemFooter publishedDate={newsArticle.created_at} author={newsArticle.author}/>
         </View>
-    </View>
+    </Pressable>
+
+    </Link>
   )
 }
 
