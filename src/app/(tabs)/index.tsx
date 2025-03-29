@@ -1,10 +1,11 @@
 import NewsListItem from "@/components/ListItems/NewsListItem";
-import { StatusBar, Text, View, FlatList, SectionList } from "react-native";
-import allNews from '@assets/data/allNews.json';
+import {  Text, View, FlatList, SectionList } from "react-native";
 import homeNews from '@assets/data/homeNews.json';
 import MainNewsCard from "@/components/ListItems/MainNewsCard";
 import TrendingListItem from "@/components/ListItems/TrendingListItem";
 import { AntDesign } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from 'expo-status-bar';
 
 const TITLES = {
   TOP_STORIES : 'Top Stories',
@@ -44,10 +45,11 @@ export default function HomeScreen() {
 
     return null;
   };
- 
+ //imp
   return (
-    <View style={{marginTop:60, margin:15}}>
-      <StatusBar translucent hidden/>
+    <SafeAreaView style={{ marginHorizontal:15}} edges={['top']}>
+      <StatusBar translucent style="dark" />
+      {/* <StatusBar style="dark"  /> */}
     <SectionList
     sections={homeNews}
     renderItem={({item, index, section})=>{
@@ -78,6 +80,6 @@ export default function HomeScreen() {
     }
     />
 
-    </View> 
+    </SafeAreaView> 
   );
 }
