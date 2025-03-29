@@ -4,6 +4,7 @@ import allNews from '@assets/data/allNews.json';
 import {formatDistanceToNow} from 'date-fns'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { News } from '@/types/types';
+import NewsListItemFooter from '../NewsListItemFooter';
 
 type NewsListItemProps = {
     newsArticle: News
@@ -21,12 +22,7 @@ const NewsListItem = ({newsArticle}:NewsListItemProps) => {
           </View>
           <Image source={{uri: newsArticle.image}} style={{width: 100, height: 100, borderRadius:10, marginLeft:'auto'}}/>
           </View>
-          <View style={{flexDirection: 'row',gap:5,alignItems:'center'}}>
-            <Text>{formatDistanceToNow(newsArticle.created_at, {addSuffix:true})}</Text>
-            <Text>&#x2022;</Text>
-            <Text>{newsArticle.author.name}</Text>
-            <MaterialCommunityIcons name="dots-horizontal" size={22} color="grey" style={{marginLeft:'auto'}} />
-          </View>
+         <NewsListItemFooter publishedDate={newsArticle.created_at} author={newsArticle.author}/>
           
         </View>
       );

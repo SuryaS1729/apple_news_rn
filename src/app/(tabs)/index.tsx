@@ -1,7 +1,8 @@
-import NewsListItem from "@/components/NewsListItem";
+import NewsListItem from "@/components/ListItems/NewsListItem";
 import { StatusBar, Text, View, FlatList, SectionList } from "react-native";
 import allNews from '@assets/data/allNews.json';
 import homeNews from '@assets/data/homeNews.json';
+import MainNewsCard from "@/components/ListItems/MainNewsCard";
 
 
 const TITLES = {
@@ -43,11 +44,11 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={{marginTop:60}}>
+    <View style={{marginTop:60, margin:15}}>
       <StatusBar translucent hidden/>
     <SectionList
     sections={homeNews}
-    renderItem={({item})=><NewsListItem newsArticle={item}/>}
+    renderItem={({item})=><MainNewsCard newsArticle={item}/>}
     renderSectionHeader={({section})=>renderSectionHeader(section.title)}
     stickySectionHeadersEnabled={false}
     showsVerticalScrollIndicator={false}
