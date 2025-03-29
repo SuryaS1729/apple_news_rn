@@ -6,10 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 
 const newPlus = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{marginHorizontal:10}}>
       <FlatList
       data={featuredMagazines}
-      renderItem = {()=><MagazineListItem/>}
+      renderItem = {({item})=><MagazineListItem magazine={item}/>}
+      numColumns={2}
       />
     </SafeAreaView>
   )
